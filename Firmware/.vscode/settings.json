@@ -30,6 +30,8 @@
     "regex": "c",
     "esp_log.h": "c",
     "functional": "c",
-    "math.h": "c"
+    "math.h": "c",
+    "gdma.h": "c",
+    "frc_timer_reg.h": "c"
   }
 }

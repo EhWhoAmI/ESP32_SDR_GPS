@@ -21,7 +21,6 @@
 #include "esp_system.h"
 #include "driver/gpio.h"
 #include "esp_timer.h"
-#include "lvgl_gui.h"
 #include "hardware.h"
 #include "config.h"
 #include <rom/ets_sys.h>
@@ -58,6 +57,7 @@ void app_main(void)
     printf("MCU SDR GPS - ILIASAM 2024\n");
 
     pcb_hardware_init();
+    esp_timer_init();
     gps_fill_summ_table();
     memset(&gps_channels[0], 0, sizeof(gps_channels));
 
@@ -80,7 +80,7 @@ void app_main(void)
 
     xTaskCreatePinnedToCore(fast_task, "fast_tsk", 4096*2, NULL, 3, NULL, 0); //Core 0
     xTaskCreatePinnedToCore(main_task, "main", 4096*2, NULL, 2, NULL, 0); //Core 0
-    xTaskCreatePinnedToCore(gui_task, "gui", 4096*2, NULL, 0, NULL, 1);//Core 1
+    // xTaskCreatePinnedToCore(gui_task, "gui", 4096*2, NULL, 0, NULL, 1);//Core 1
 }
 
 // High priority task, core 0

@@ -18,9 +18,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-#include "lvgl_gui.h"
-
-
 #if (ENABLE_CALC_POSITION)
   #include "solving.h"
   extern sol_t gps_sol;
@@ -159,7 +156,7 @@ void gps_master_handling(gps_ch_t* channels, uint8_t index)
 
   if (gps_common_need_acq)
   {
-    lvgl_store_gps_state(channels);
+    // lvgl_store_gps_state(channels);
   }
   else
   {
@@ -168,7 +165,7 @@ void gps_master_handling(gps_ch_t* channels, uint8_t index)
     {
       gps_master_nav_handling(channels);
 
-      lvgl_store_gps_state(channels);
+      // lvgl_store_gps_state(channels);
     }
   }
 }
@@ -461,7 +458,7 @@ void gps_master_run_solving(void)
 
   gps_common_need_solve = 0;
 
-  lvgl_store_new_position(&gps_sol, &final_pos[0]);
+  // lvgl_store_new_position(&gps_sol, &final_pos[0]);
 }
 #endif //ENABLE_CALC_POSITION
 

@@ -133,6 +133,8 @@ esp_err_t c_spi_slave_initialize(spi_host_device_t host, const spi_bus_config_t 
     bool spi_chan_claimed;
     uint32_t actual_tx_dma_chan = 0;
     uint32_t actual_rx_dma_chan = 0;
+
+    spi_dma_ctx_t pi_dma_ctx;
     esp_err_t ret = ESP_OK;
     esp_err_t err;
     SPI_CHECK(c_is_valid_host(host), "invalid host", ESP_ERR_INVALID_ARG);
